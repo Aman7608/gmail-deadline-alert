@@ -1,0 +1,8 @@
+anthropic>=2.12,<3
+twilio>=9.13,<10
+google-api-python-client>=2.202,<3
+google-auth>=2.63,<3
+google-auth-oauthlib>=1.5,<2
+google-auth-httplib2>=0.4,<1
+python-dotenv>=1.2,<2
+tzdata>=2026.6

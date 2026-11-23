@@ -1,0 +1,24 @@
+services:
+  gmail-deadline-alert:
+    build: .
+    container_name: gmail-deadline-alert
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      HEADLESS: "1"  # no browser inside Docker: create token.json on your PC first (--auth)
+    volumes:
+      # Your Google files. They must exist before starting (run --auth on your PC first).
+      - type: bind
+        source: ./credentials.json
+        target: /app/credentials.json
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./token.json
+        target: /app/token.json
+        bind:
+          create_host_path: false
+      # Database and logs stay on your machine, so restarts keep the history
+      - ./data:/app/data
+      - ./logs:/app/logs
